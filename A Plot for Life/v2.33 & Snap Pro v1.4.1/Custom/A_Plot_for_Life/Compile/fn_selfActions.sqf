@@ -230,7 +230,8 @@ if (!isNull cursorTarget && !_inVehicle && !_isPZombie && (player distance curso
 			};
 		};
 		if (s_player_plot_take_ownership < 0) then {
-			if (DZE_APlotforLife) then {
+			// NK: Make sure we only allow taking ownership if both DZE_APlotforLife and DZE_PlotOwnership is true
+			if (DZE_APlotforLife && DZE_PlotOwnership) then {
 				_isowner = [player, _cursorTarget] call FNC_check_owner;
 				If (( _isowner select 0 )) then{
 					s_player_plot_take_ownership = player addAction ["Take plot items ownership", "Custom\A_Plot_for_Life\Action\plot_take_ownership.sqf", "", 1, false];
